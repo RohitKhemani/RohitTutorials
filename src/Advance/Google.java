@@ -3,6 +3,7 @@ package Advance;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,17 +17,20 @@ public class Google {
 
 		System.setProperty("webdriver.chrome.driver","F:\\Selenium\\exe files\\chromedriver_win32\\chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("https://www.google.com");
+		driver.get("https://www.amazon.com");
 		
-		WebElement search = driver.findElement(By.xpath("//input[@class='gLFyf gsfi']"));
+		down(driver);
 		
-		search.sendKeys("Hrith");
-		search.sendKeys(Keys.ARROW_DOWN);
-		search.sendKeys(Keys.ARROW_DOWN);
-		search.sendKeys(Keys.ENTER);
 
 		
 		
+	}
+	
+	public static void down(WebDriver driver) {
+		
+	JavascriptExecutor js =	((JavascriptExecutor)driver);
+	
+	js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
 	}
 
 }
